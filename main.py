@@ -1,13 +1,11 @@
-from flask import Flask
-from flask import render_template
-from config.config import config
 
-from handlers.videos_from_vk import get_videos
+# A very simple Flask Hello World app for you to get started with...
+
+from flask import Flask
 
 app = Flask(__name__)
-# flask --app main.py run
 
-@app.route("/")
-def index():
-    """Главная страница"""
-    return render_template('home.html', videos=get_videos(config.vk_token))
+@app.route('/')
+def hello_world():
+    return 'Hello from Flask!'
+
