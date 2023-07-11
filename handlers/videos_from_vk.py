@@ -1,5 +1,4 @@
 import requests
-from typing import Optional
 
 
 def request(token: str) -> dict:
@@ -12,12 +11,12 @@ def request(token: str) -> dict:
                  }).json()
     
     
-def pars_data(response: dict) -> Optional[list[dict]]:
+def pars_data(response: dict) -> list:
     """Парсинг данных"""
     try:
         data = response["response"]["items"]
     except KeyError:
-        return
+        return []
 
     videos = []
     for video in data:
