@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometry</title>
+</head>
+<body>
+    <h2>Будем учить планиметрию</h2>
+
+    <div>
+    {% for video in videos %}
+        <div>
+            <img src="{{ video.image.url }}" alt="image don't load" width="150px">
+            <a href="{{ video.player }}">{{ video.title }}</a>
+        </div>
+        <br>
+    {% endfor %}
+    </div>
+</body>
+</html>
