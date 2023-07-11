@@ -16,7 +16,7 @@ def pars_data(response: dict) -> list:
     try:
         data = response["response"]["items"]
     except KeyError:
-        return []
+        return ['неправильный ключ']
 
     videos = []
     for video in data:
