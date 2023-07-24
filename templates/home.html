@@ -13,6 +13,16 @@
         <div>
             <img src="{{ video.image.url }}" alt="image don't load" width="150px">
             <a href="{{ video.player }}">{{ video.title }}</a>
+            {{ watched }}
+
+            <form method="POST">
+                <label for="check">Смотрел?</label>
+                <input type="checkbox" id="check" name="check" value="{{ video.watched }}" {% if video.watched %}checked{% endif %}>
+
+                <label for="title"></label>
+                <input type="hidden" id="title" name="title" value="{{ video.title }}">
+                <input type="submit" value="Отметить!">
+            </form>
         </div>
         <br>
     {% endfor %}

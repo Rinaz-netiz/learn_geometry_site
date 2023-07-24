@@ -25,15 +25,15 @@ class SQL:
     @connect
     def create_table_in_db(self, *args, **kwargs) -> None:
         kwargs["cursor"].execute(f"""CREATE TABLE IF NOT EXISTS {self.table_name}(
-                        url TEXT, 
-                        ready BLOB
+                        title TEXT, 
+                        watched BLOB
                         )""") 
     
     @connect
     def insert_data_to_db(self, data: Tuple, *args, **kwargs) -> Optional[NoReturn]:
         try:
             kwargs["cursor"].execute(f"""
-                                        INSERT INTO {self.table_name} (url, ready)
+                                        INSERT INTO {self.table_name} (title, watched)
                                         VALUES (?,?)
                                     """, data)
             kwargs["con"].commit()
@@ -54,8 +54,8 @@ class SQL:
         try:
             kwargs["cursor"].execute(f"""
                                         UPDATE {self.table_name} 
-                                        SET ready = ?
-                                        WHERE url = ?
+                                        SET watched = ?
+                                        WHERE title = ?
                                     """, data)
             kwargs["con"].commit()
         except sq.OperationalError:
@@ -65,13 +65,13 @@ class SQL:
     def bunch_insert(self, data: List[Tuple], *args, **kwargs) -> Optional[NoReturn]:
         try:
             kwargs["cursor"].executemany(f"""
-                                        INSERT INTO {self.table_name} (url, ready)
+                                        INSERT INTO {self.table_name} (title, watched)
                                         VALUES (?,?)
                                     """, data)
             kwargs["con"].commit()
         except sq.OperationalError:
             raise ValueError("Table is none")
-    
+        
 
 if __name__ == "__main__":
     sql = SQL("vk_videos.db", "videos")

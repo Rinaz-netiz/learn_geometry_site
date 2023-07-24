@@ -1,5 +1,7 @@
 import requests
 
+from config.config import config
+
 
 def request(token: str) -> dict:
     """Запрос в вк"""
@@ -29,10 +31,7 @@ def pars_data(response: dict) -> list:
     return videos
 
 
-def get_videos(token):
+def get_videos():
     """Получение видео"""
-    return pars_data(request(token))
+    return pars_data(request(config.vk_token))
 
-
-if __name__ == "__main__":
-    get_videos("vk1.a.DtYYSIGRFQT00dGDRoPXTJGS2UL6S0KxNmM_FZNiJ9S__YhGM57ZCNznYj9CpoW-UGjQ0OmyVEXY2NOfPnE04oZT94jT3DCxgTCWtP3VzgJGtVJl9L3VKxn9XU61PMnvKpN3fqsfQ4ocB2dzjhoaT6jrrNj-0qWke65bM5yZfC34cfZz0g8EQIOd3HSQvQFRYnFkxk9YxQcXFPF7t8s8QQ")
