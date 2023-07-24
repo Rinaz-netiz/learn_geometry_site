@@ -41,7 +41,7 @@ class SQL:
             raise ValueError("Table is none")
     
     @connect
-    def select_all(self, *args, **kwargs) -> List | NoReturn:
+    def select_all(self, *args, **kwargs) -> List:
         try:
             kwargs["cursor"].execute(f"""SELECT * FROM {self.table_name}""")
         except sq.OperationalError:
