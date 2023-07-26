@@ -9,7 +9,7 @@
     <h2>Будем учить планиметрию</h2>
 
     <div>
-    {% for video in videos %}
+    {% for video in pag.get_content() %}
         <div>
             <img src="{{ video.image.url }}" alt="image don't load" width="150px">
             <a href="{{ video.player }}">{{ video.title }}</a>
@@ -27,5 +27,16 @@
         <br>
     {% endfor %}
     </div>
+
+    <div class="pages">
+        <a href="{{ pag.first_page() }}">first</a>
+        
+        {% for page in pag.pages() %}
+            <a href="{{ page['url'] }}">{{ page['num'] }}</a>
+        {% endfor %}
+
+        <a href="{{ pag.last_page() }}">last</a>
+    </div>
+
 </body>
 </html>

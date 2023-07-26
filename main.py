@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 
 from handlers.utils import union_data
+from handlers.pagination import Pagination
 from db import sql
  
 
@@ -9,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
-    """Главная страница"""
+    """Главная страница"""    
     if request.method == 'POST':
         title = request.form.get("title")
         watched = request.form.get("check")
@@ -21,6 +22,9 @@ def index():
         
         sql.update_data((watched, title))
         return redirect(url_for("index"))
-        
-    videos = union_data()  
-    return render_template('home.html', videos=videos)
+    
+    if request.method == "GET":
+        page = request.args.get("page", 1)
+          
+    pagination = Pagination(union_data() , 20, page)
+    return render_template('home.html', pag=pagination)
