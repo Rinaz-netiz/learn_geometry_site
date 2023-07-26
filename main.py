@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
 def index():
-    """Главная страница"""
+    """Главная страница"""    
     if request.method == 'POST':
         title = request.form.get("title")
         watched = request.form.get("check")
@@ -24,7 +24,7 @@ def index():
         return redirect(url_for("index"))
     
     if request.method == "GET":
-        page = request.args.get("page")
+        page = request.args.get("page", 1)
           
     pagination = Pagination(union_data() , 20, page)
     return render_template('home.html', pag=pagination)

@@ -2,7 +2,7 @@ from typing import List, Iterable, Dict
 
 
 class Pagination:
-    def __init__(self, iterable: Iterable, on_page: int, page: str = 1) -> None:
+    def __init__(self, iterable: Iterable, on_page: int, page: str) -> None:
         self.iterable = iterable
         self.on_page = on_page
         self._now_page = int(page)
