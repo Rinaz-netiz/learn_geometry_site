@@ -39,13 +39,17 @@
     </div>
 
     <div class="pages">
-        <a href="{{ pag.first_page() }}">first</a>
+        <div class="container">
+            <div class="pages__inner">
+                <a href="{{ pag.first_page() }}" class="start_end">first</a>
         
-        {% for page in pag.pages() %}
-            <a href="{{ page['url'] }}">{{ page['num'] }}</a>
-        {% endfor %}
-
-        <a href="{{ pag.last_page() }}">last</a>
+                {% for page in pag.pages() %}
+                    <a href="{{ page['url'] }}" class="page_link">{{ page['num'] }}</a>
+                {% endfor %}
+        
+                <a href="{{ pag.last_page() }}" class="start_end">last</a>
+            </div>
+        </div>
     </div>
 
 </body>
