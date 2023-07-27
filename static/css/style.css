@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+}
+* {
+    box-sizing: border-box;
+}
+
+.box {
+    background-color: rgb(238, 238, 238);
+}
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+}
+.box__inner {
+}
+.box__title {
+    font-size: 40px;
+    color: rgb(36, 36, 36);
+    text-align: center;
+    margin: 0;
+    padding: 30px;
+}
+.box__video {
+    display: flex;
+    justify-content: space-between;
+}
+
+.img__and_link a {
+    text-decoration: none;
+    font-size: 20px;
+    color: rgb(47, 47, 47);
+    position:relative; 
+    bottom: 36px;
+    left: 8px;
+}
+
+.box__form {
+    margin-top: 8px;
+    font-size: 24px;
+}
+.box__form input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-top: 16px;
+}
+.box__form_button {
+    background-color: rgb(244, 89, 100);
+    padding: 15px 30px 10px;
+    font-size: 24px;
+    color: white;
+    border-radius: 10px;
+}
+.box__form_button:hover {
+    background-color: rgb(251, 42, 56);
+    color: rgb(211, 210, 210);
+}
