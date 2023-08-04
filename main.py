@@ -21,10 +21,9 @@ def index():
             watched = 1
         
         sql.update_data((watched, title))
-        return redirect(url_for("index"))
+        return redirect(url_for("index", page=request.args.get("page", 1)))
     
-    if request.method == "GET":
-        page = request.args.get("page", 1)
+    page = request.args.get("page", 1)
           
     pagination = Pagination(union_data() , 20, page)
     return render_template('home.html', pag=pagination)
